@@ -5,35 +5,17 @@ public class CubeControl : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        Debug.Log("CubeControl script has started.");
     }
 
-    // Update is called once per frame
+    float speed = 4f;
     void Update()
     {
 
-        if (Input.GetKey(KeyCode.W)){
-            transform.position += (Vector3.forward * Time.deltaTime);
-            }
-        if (Input.GetKey(KeyCode.S)){
-            transform.position += (Vector3.back * Time.deltaTime);
-            }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += (Vector3.left * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += (Vector3.right * Time.deltaTime);
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Rotate(Vector3.down, 1f);
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Rotate(Vector3.up, 1f);
-        }
+        float x = Input.GetAxis("Horizontal");
+        float z = Input.GetAxis("Vertical");
+
+        transform.Translate(x * Time.deltaTime, 0, z * Time.deltaTime);
 
 
     }
